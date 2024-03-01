@@ -1,0 +1,52 @@
+The Problem
+
+We are looking for you to find restaurant data and return this in an interface of your
+choice.
+
+Using the API provided you will need to send a postcode to return a set of data, you’ll
+need to filter this data to focus just on the restaurant data.
+
+You will notice that a lot of data is returned in the ‘restaurant object’ (and in the whole
+response!), we’re only interested in the following pieces of data being returned:
+
+● Name
+● Cuisines
+● Rating - as a number
+● Address
+
+The Brief
+
+We would like you to display these four data points in any way of your choosing, this
+could be: a web interface, console application, or anything you like.
+
+Regardless of interface we’d like you to limit your shown data to the first 10 restaurants
+returned, we’re more interested in how you display each one rather than a huge list of
+data.
+
+Please upload your completed solution to Github (bonus points if we can see git
+history!).
+
+Please note there is no time limit to this, however we do require completion of the
+following assessment criteria.
+
+Assignment Criteria
+
+Ensure you complete the below:
+
+● All four restaurant data points are displayed in your interface (name, cuisines,
+rating-as a number and address)
+● All interface types will be assessed the same, please focus on displaying the
+data
+● Add how to build, compile and run your solution into the README
+● Include any assumptions or things that were not clear to you in the README
+● Include any improvements you’d make to your solution in the README
+● Send your GitHub link, with interface including all assessment criteria outlined
+above, to john.doe@justeattakeaway.com by/on the morning of your assessment day.
+
+API
+The API endpoint you need to access is:
+https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/{postcode}
+
+Replace {postcode} with a postcode of your choice eg EC4M 7RF to return restaurant
+data in that postcode.
+https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF
