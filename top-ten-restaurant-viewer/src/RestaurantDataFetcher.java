@@ -12,24 +12,15 @@ import java.util.ArrayList;
 public class RestaurantDataFetcher
 {
    // instance variables
-
    // constructors
-   /**
-    * Constructs a restaurant fetcher object by initialising its variables.
-    */
-   public RestaurantDataFetcher()
-   {
-   }
-
    // methods
    /**
     * Fetches the restaurant data of restaurants at the specified postcode,
     * and returns an array list of restaurant objects.
     * @param postcode the postcode to search for restaurant data
-    * @param numberOfRestaurantsToFetch the number of restaurants to fetch
     * @return an array list of restaurant objects
     */
-   public ArrayList<Restaurant> fetchRestaurants(String postcode, int numberOfRestaurantsToFetch)
+   public ArrayList<Restaurant> fetchRestaurants(String postcode)
    {
       ArrayList<Restaurant> restaurantsList = new ArrayList<>();
 
@@ -48,7 +39,7 @@ public class RestaurantDataFetcher
          JSONArray restaurantsArray = jsonResponse.getJSONArray("restaurants");
 
          // create a list of restaurant objects
-         for (int index = 0; index < Math.min(numberOfRestaurantsToFetch, restaurantsArray.length()); index++)
+         for (int index = 0; index < restaurantsArray.length(); index++)
          {
             JSONObject restaurantJson = restaurantsArray.getJSONObject(index);
             String name = restaurantJson.getString("name");

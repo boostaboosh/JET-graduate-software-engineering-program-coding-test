@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * The Restaurant viewer class contains a program which displays restaurant
@@ -12,11 +13,63 @@ public class RestaurantViewer
     */
    public static void main(String[] args)
    {
-      final String POSTCODE = "FK94LJ"; // e.g.EC4M7RF
       RestaurantDataFetcher restaurantDataFetcher = new RestaurantDataFetcher();
-      ArrayList<Restaurant> restaurants = restaurantDataFetcher.fetchRestaurants(POSTCODE, 10);
+      final String POSTCODE = "CT179FL"; // e.g.EC4M7RF
+      ArrayList<Restaurant> restaurants = restaurantDataFetcher.fetchRestaurants(POSTCODE);
+
       RestaurantViewer restaurantViewer = new RestaurantViewer();
-      restaurantViewer.displayRestaurants(restaurants);
+      final int NUMBER_OF_RESTAURANTS_TO_DISPLAY = 10;
+      ArrayList<Restaurant> topTenRestaurants =
+            restaurantViewer.getTopRestaurants(restaurants, NUMBER_OF_RESTAURANTS_TO_DISPLAY);
+      restaurantViewer.displayRestaurants(topTenRestaurants);
+   }
+
+   /**
+    * Returns the restaurants with the highest rating in the array list.
+    * @param restaurants the array list of restaurants to search within
+    * @param numberOfRestaurantsToDisplay the number of restaurants to return
+    * @return an array list with the specified number of highest rated restaurants
+    */
+   private ArrayList<Restaurant> getTopRestaurants(ArrayList<Restaurant> restaurants, int numberOfRestaurantsToDisplay)
+   {
+      ArrayList<Restaurant> topTenRestaurants = new ArrayList<>();
+
+      restaurants.sort(new Comparator<Restaurant>()
+      {
+         @Override
+         public int compare(Restaurant restaurantOne, Restaurant restaurantTwo)
+         {
+            final double EPSILON = 1E-14;
+            if (Math.abs(restaurantOne.getNumberRating() - restaurantTwo.getNumberRating()) < EPSILON)
+            {
+               return 0;
+            }
+            else if (restaurantOne.getNumberRating() < restaurantTwo.getNumberRating())
+            {
+               // defining a descending order sort by telling the sort method that restaurantOne
+               // should come after restaurantTwo if restaurantOne has a lower rating
+               return 1;
+            }
+            else
+            {
+               return -1;
+            }
+         }
+      });
+
+      if (restaurants.size() <= numberOfRestaurantsToDisplay)
+      {
+         topTenRestaurants = restaurants;
+      }
+      else
+      {
+         for (int index = 0; index < numberOfRestaurantsToDisplay; index++)
+         {
+            topTenRestaurants.add(restaurants.get(index));
+         }
+      }
+
+      return topTenRestaurants;
    }
 
    /**
