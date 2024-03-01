@@ -50,3 +50,105 @@ https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/{postcod
 Replace {postcode} with a postcode of your choice eg EC4M 7RF to return restaurant
 data in that postcode.
 https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/EC4M7RF
+
+problem-solving:
+
+Where is the restaurant data?
+The HTTP get request returns a big JSON objects
+with one "restaurants" key with an array of JSON objects representing restaurants as a value.
+
+What the HTTP get request returns looks like:
+
+"restaurants": [
+    {
+      "id": "194797",
+      "name": "Best Kebab and Pizza House",
+      "uniqueName": "best-kebab-and-pizza-house-alloa",
+      "address": {
+        "city": "Alloa",
+        "firstLine": "39 Shillinghill",
+        "postalCode": "FK10 1JX",
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            -3.789417,
+            56.115805
+          ]
+        }
+      },
+      "rating": {
+        "count": 509,
+        "starRating": 4.4,
+        "userRating": null
+      },
+      "isNew": false,
+      "driveDistanceMeters": 8873.0,
+      "openingTimeLocal": "2024-03-02T15:55:00",
+      "deliveryOpeningTimeLocal": "2024-03-01T16:15:00",
+      "deliveryEtaMinutes": {
+        "rangeLower": 20,
+        "rangeUpper": 35
+      },
+      "isCollection": true,
+      "isDelivery": true,
+      "isOpenNowForCollection": true,
+      "isOpenNowForDelivery": true,
+      "isOpenNowForPreorder": false,
+      "isTemporarilyOffline": false,
+      "deliveryCost": 7.0,
+      "minimumDeliveryValue": 5.0,
+      "defaultDisplayRank": 0,
+      "isTemporaryBoost": false,
+      "isPremier": false,
+      "logoUrl": "http://d30v2pzvrfyzpo.cloudfront.net/uk/images/restaurants/194797.gif",
+      "isTestRestaurant": false,
+      "deals": [
+        {
+          "description": "10% off when you spend £20",
+          "offerType": "Percent"
+        }
+      ],
+      "tags": [],
+      "cuisines": [
+        {
+          "name": "Kebab",
+          "uniqueName": "kebabs"
+        },
+        {
+          "name": "Pizza",
+          "uniqueName": "pizza"
+        },
+        {
+          "name": "Deals",
+          "uniqueName": "deals"
+        }
+      ],
+      "availability": {
+        "delivery": {
+          "isOpen": true,
+          "canPreOrder": false,
+          "isTemporarilyOffline": false,
+          "nextAvailability": {
+            "from": "2024-03-02T16:15:00"
+          },
+          "etaMinutes": {
+            "rangeLower": 20,
+            "rangeUpper": 35
+          }
+        },
+        "collection": {
+          "isOpen": true,
+          "canPreOrder": false,
+          "isTemporarilyOffline": false,
+          "nextAvailability": {
+            "from": "2024-03-02T15:55:00"
+          },
+          "etaMinutes": {
+            "approximate": 10
+          }
+        }
+      }
+    },
+    other restaurant JSON objects in the restaurants JSON array from the HTTP response
+    ]
+

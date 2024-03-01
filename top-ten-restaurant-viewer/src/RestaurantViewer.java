@@ -25,6 +25,23 @@ public class RestaurantViewer
     */
    public void displayRestaurants(ArrayList<Restaurant> restaurants)
    {
-      // TODO: fill implementation
+      if (restaurants.isEmpty())
+      {
+         System.out.println("No restaurants found.");
+      }
+      else
+      {
+         int counter = 1;
+         for (Restaurant restaurant : restaurants)
+         {
+            System.out.println("Restaurant number: " + counter);
+            System.out.println("Name: " + restaurant.getName());
+            System.out.println("Cuisines: " + restaurant.getCuisines());
+            System.out.println("Rating: " + restaurant.getNumberRating());
+            System.out.println("Address: " + restaurant.getAddress());
+            System.out.println();
+            counter = counter + 1;
+         }
+      }
    }
 }
