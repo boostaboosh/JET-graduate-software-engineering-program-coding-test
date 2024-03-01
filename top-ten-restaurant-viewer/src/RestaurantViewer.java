@@ -12,9 +12,9 @@ public class RestaurantViewer
     */
    public static void main(String[] args)
    {
-      final String POSTCODE = "EC4M7RF";
-      RestaurantDataFetcher restaurantDataFetcherataFetcher = new RestaurantDataFetcher();
-      ArrayList<Restaurant> restaurants = restaurantDataFetcherataFetcher.fetchRestaurants(POSTCODE);
+      final String POSTCODE = "FK94LJ"; // e.g.EC4M7RF
+      RestaurantDataFetcher restaurantDataFetcher = new RestaurantDataFetcher(10);
+      ArrayList<Restaurant> restaurants = restaurantDataFetcher.fetchRestaurants(POSTCODE);
       RestaurantViewer restaurantViewer = new RestaurantViewer();
       restaurantViewer.displayRestaurants(restaurants);
    }
